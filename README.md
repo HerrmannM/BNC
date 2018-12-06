@@ -37,7 +37,7 @@ The resulting jar can be found in the `dist` folder.
 It embeds the necessary dependencies, so using the software is simply a matter of calling java with the `-jar` flag.
 For example:
 ```
-java -jar dist/MonashML.jar --model ESKDB -E 5 -I 1000 -K 5 -L 2 --evaluator holdout 0.5 /path/to/file.arff
+java -jar dist/bnc.jar --model ESKDB -E 5 -I 1000 -K 5 -L 2 --evaluator holdout 0.5 /path/to/file.arff
 ```
 
 The `--model` and `--evaluator` flags are required.
@@ -58,6 +58,12 @@ Parameters:
   * Parameters: the ratio of the dataset in the "test" and a dataset arff file
 * K-Fold Cross Validation `--evaluator kfoldxval 2 5 /path/to/file.arff`
   * Parameters: The number of splits, the number of rounds and a dataset arff file
+
+### About abalone.arff
+Dataset from https://archive.ics.uci.edu/ml/datasets/abalone.
+Dua, D. and Karra Taniskidou, E. (2017). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml].
+Irvine, CA: University of California, School of Information and Computer Science.
+
 
 ### Dependencies
 * [Apache Common Maths 3 - 3.6.1](https://commons.apache.org/proper/commons-math/)
