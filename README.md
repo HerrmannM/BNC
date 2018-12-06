@@ -63,8 +63,8 @@ Parameters:
 * [Apache Common Maths 3 - 3.6.1](https://commons.apache.org/proper/commons-math/)
 * [Apache Common CLI - 1.4](https://commons.apache.org/proper/commons-cli/)
 * [Weka - 3.8.3](https://www.cs.waikato.ac.nz/ml/weka/index.html)
-* [MonashMLHDP](https://github.com/HerrmannM/MonashMLHDP)
-* [MonashMLTools](https://github.com/HerrmannM/MonashMLTools)
+* [HDP](https://github.com/HerrmannM/HDP)
+* [MLTools](https://github.com/HerrmannM/MLTools)
 
 ## Contributors
 * [Dr. François Petitjean](https://github.com/fpetitjean)
