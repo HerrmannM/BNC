@@ -1,5 +1,32 @@
-# MonashML
-Machine Learning Project at Monash University, Melbourne, Australia
+# BNC
+Bayesian Network Classifiers, Monash University, Melbourne, Australia.
+
+This repository supports our work on Bayesian Network Classifiers (BNCs).
+It currently supports 2 classifiers: Selective kDB (SkDB) and Ensemble Selective kDB (ESKDB).
+Please reference the associated work: 
+
+```
+@Article{MartinezEtAl16,
+    Title = {Scalable Learning of {Bayesian} Network Classifiers},
+    Author = {Ana M. Martinez and Geoffrey I. Webb and Shenglei Chen and Nayyar A. Zaidi},
+    Journal = {Journal of Machine Learning Research},
+    Year = {2016},
+    Number = {44},
+    Pages = {1-35},
+    Volume = {17},
+    Url = {http://jmlr.org/papers/v17/martinez16a.html}
+}
+```
+
+```
+@Article{ZhangEtAl2019,
+    Title = {Ensemble Selective KDB},
+    Author = {Zhang, He and Petitjean, Francois and Buntine, Wray},
+    Journal = {Submitted to Machine Learning},
+    note = {In revision}
+}
+```
+
 
 ## Compiling and Launching
 After cloning the git repository, use `ant` to compile the classes and create a jar.
@@ -23,6 +50,7 @@ Parameters:
 * `-I`: Gibbs sampling iteration
 * `-K`: The number of parents
 * `-L`: Tying on LEVEL, the nodes on the same LEVEL share the same concentration parameter
+* `-M`: If present, use M-Estimation instead of HDP
 * `-E`: Ensemble size of ESKDB
 
 ### Evaluator examples
