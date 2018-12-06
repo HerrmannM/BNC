@@ -59,7 +59,10 @@ Parameters:
 * K-Fold Cross Validation `--evaluator kfoldxval 2 5 /path/to/file.arff`
   * Parameters: The number of splits, the number of rounds and a dataset arff file
 
-### About abalone.arff
+### Example
+The `example` folder contains a script testing several model configurations with 5 rounds of 2-fold cross validation.
+
+#### About abalone.arff
 Dataset from https://archive.ics.uci.edu/ml/datasets/abalone.
 Dua, D. and Karra Taniskidou, E. (2017). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml].
 Irvine, CA: University of California, School of Information and Computer Science.
