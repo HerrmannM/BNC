@@ -8,6 +8,7 @@ import org.apache.commons.math3.random.MersenneTwister;
 import monash.ml.evaluator.Evaluator;
 import monash.ml.evaluator.Holdout;
 import monash.ml.evaluator.KFoldXVal;
+import monash.ml.evaluator.TrainTest;
 import monash.ml.evaluator.Evaluator.Result;
 import monash.ml.model.ESKDB;
 import monash.ml.model.Model;
@@ -39,7 +40,9 @@ public class Main {
 		
 		KFoldXVal kfoldxval = new KFoldXVal();
 		evaluators.put(kfoldxval.get_name(), kfoldxval);
-
+		
+		TrainTest traintest = new TrainTest();
+		evaluators.put(traintest.get_name(), traintest);
 		
 		
 		// --- --- --- Read the command line, handle options.. Exit on error.
