@@ -33,7 +33,7 @@
  * -K 	Value of K for KDB.
  * 
  */
-package monash.ml.model.eskdb;
+package bnc.model.eskdb;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -45,11 +45,11 @@ import java.util.HashMap;
 import org.apache.commons.math3.random.RandomGenerator;
 import org.apache.commons.math3.util.FastMath;
 
-import monash.ml.hdp.ProbabilityTree;
-import monash.ml.hdp.logStirling.LogStirlingFactory;
-import monash.ml.hdp.logStirling.LogStirlingGenerator;
-import monash.ml.tools.SUtils;
-import monash.ml.tools.arff.ArffReaderFactory;
+import hdp.ProbabilityTree;
+import hdp.logStirling.LogStirlingFactory;
+import hdp.logStirling.LogStirlingGenerator;
+import mltools.SUtils;
+import mltools.arff.ArffReaderFactory;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader.ArffReader;

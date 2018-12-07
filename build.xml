@@ -6,7 +6,7 @@
 	<property name="bin" 	location="bin"/>
 	<property name="dist" 	location="dist"/>
 	<property name="lib" 	location="lib"/>
-	<property name="mainclass" 	value="monash.ml.main.Main"/>
+	<property name="mainclass" 	value="bnc.main.Main"/>
 	
     <path id="jars">
         <fileset dir="${lib}" includes="**/*.jar"/>

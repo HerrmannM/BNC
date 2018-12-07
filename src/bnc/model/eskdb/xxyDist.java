@@ -24,9 +24,9 @@
  * 
  */
 
-package monash.ml.model.eskdb;
+package bnc.model.eskdb;
 
-import monash.ml.tools.SUtils;
+import mltools.SUtils;
 import weka.core.Instance;
 import weka.core.Instances;
 

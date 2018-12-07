@@ -1,4 +1,4 @@
-package monash.ml.model;
+package bnc.model;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -9,15 +9,15 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.math3.random.RandomGenerator;
 
-import monash.ml.model.Model;
-import monash.ml.model.eskdb.wdBayesOnlinePYP;
-import monash.ml.tools.arff.ArffReaderFactory;
+import bnc.model.Model;
+import bnc.model.eskdb.wdBayesOnlinePYP;
+import mltools.arff.ArffReaderFactory;
 import weka.core.Instance;
 
-public final class ESKDB implements Model {
+public final class SKDB implements Model {
 
 	// --- ---- --- Constant
-	public static final String name = "ESKDB";
+	public static final String name = "SKDB";
 
 	// --- --- --- Fields
 	private wdBayesOnlinePYP backendModel;
@@ -26,7 +26,6 @@ public final class ESKDB implements Model {
 	private int depth_k;
 	private int tying;
 	private int iterGibbs;
-	private int ensemble;
 	private boolean mestimation;
 	private boolean backoff;
 
@@ -53,11 +52,11 @@ public final class ESKDB implements Model {
 		backendModel.setK(depth_k);
 		backendModel.setMEstimation(mestimation);
 		backendModel.setGibbsIteration(iterGibbs);
-		backendModel.setEnsembleSize(ensemble);
 		backendModel.setBackoff(backoff);
 		backendModel.setM_Tying(tying);
 		backendModel.setPrint(true);
 		backendModel.setRandomGenerator(rg);
+		
 		backendModel.buildClassifier(readerFactory);
 	}
 
@@ -76,10 +75,6 @@ public final class ESKDB implements Model {
 		Option back = Option.builder("B").desc("Use backoff").build();
 		
 		// Specify the IterGibbs. Required.
-		Option ensemble = Option.builder("E").desc("Specify the ensemble size of the model (integer value expected)").required()
-				.hasArg().argName("ensemble size").build();
-		
-		// Specify the IterGibbs. Required.
 		Option igibbs = Option.builder("I").desc("Specify the itergibss of the model (integer value expected)").required()
 				.hasArg().argName("iteration gibbs").build();
 
@@ -95,7 +90,7 @@ public final class ESKDB implements Model {
 		Option smoothing = Option.builder("M").desc("Use MEstimation instead of HDP").build();
 
 		// --- Final construction
-		options.addOption(back).addOption(ensemble).addOption(igibbs).addOption(K).addOption(tying).addOption(smoothing);
+		options.addOption(back).addOption(igibbs).addOption(K).addOption(tying).addOption(smoothing);
 		return options;
 	}
 	
@@ -124,16 +119,6 @@ public final class ESKDB implements Model {
 			
 			// Check for the backoff
 			backoff = commandLine.hasOption("B");
-			
-			// Check the ensemble 'E' (required, so is present)
-			try{
-				ensemble = Integer.parseInt(commandLine.getOptionValue("E"));
-			} catch (NumberFormatException e) {
-				throw new ParseException("The -E option requires a positive integer value.");
-			}
-			if(ensemble<=0) {
-				throw new ParseException("The -E option requires a positive integer value.");
-			}
 			
 			// Check the gibbs 'I' (required, so is present)
 			try{

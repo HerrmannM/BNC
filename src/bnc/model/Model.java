@@ -1,9 +1,9 @@
-package monash.ml.model;
+package bnc.model;
 
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.math3.random.RandomGenerator;
 
-import monash.ml.tools.arff.ArffReaderFactory;
+import mltools.arff.ArffReaderFactory;
 import weka.core.Instance;
 
 public interface Model {

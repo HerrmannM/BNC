@@ -61,6 +61,7 @@ Parameters:
 
 ### Example
 The `example` folder contains a script testing several model configurations with 5 rounds of 2-fold cross validation.
+You can add your datasets in the `data` folder, and they will be automatically taken into account by the script.
 
 #### About abalone.arff
 Dataset from https://archive.ics.uci.edu/ml/datasets/abalone.

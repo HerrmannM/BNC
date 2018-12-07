@@ -1,4 +1,4 @@
-package monash.ml.evaluator;
+package bnc.evaluator;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.math3.random.RandomGenerator;
 
-import monash.ml.model.Model;
-import monash.ml.tools.arff.ArffFile;
-import monash.ml.tools.arff.ArffFileJoin;
-import monash.ml.tools.arff.Utility;
+import bnc.model.Model;
+import mltools.arff.ArffFile;
+import mltools.arff.ArffFileJoin;
+import mltools.arff.Utility;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader.ArffReader;

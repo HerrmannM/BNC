@@ -1,18 +1,18 @@
-package monash.ml.main;
+package bnc.main;
 
 import java.security.SecureRandom;
 import java.util.HashMap;
 
 import org.apache.commons.math3.random.MersenneTwister;
 
-import monash.ml.evaluator.Evaluator;
-import monash.ml.evaluator.Holdout;
-import monash.ml.evaluator.KFoldXVal;
-import monash.ml.evaluator.TrainTest;
-import monash.ml.evaluator.Evaluator.Result;
-import monash.ml.model.ESKDB;
-import monash.ml.model.Model;
-import monash.ml.model.SKDB;
+import bnc.evaluator.Evaluator;
+import bnc.evaluator.Holdout;
+import bnc.evaluator.KFoldXVal;
+import bnc.evaluator.TrainTest;
+import bnc.evaluator.Evaluator.Result;
+import bnc.model.ESKDB;
+import bnc.model.Model;
+import bnc.model.SKDB;
 
 
 public class Main {

@@ -1,4 +1,4 @@
-package monash.ml.evaluator;
+package bnc.evaluator;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,8 +8,8 @@ import java.security.SecureRandom;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.math3.random.RandomGenerator;
 
-import monash.ml.model.Model;
-import monash.ml.tools.arff.ArffFile;
+import bnc.model.Model;
+import mltools.arff.ArffFile;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader.ArffReader;
@@ -17,14 +17,15 @@ import weka.core.converters.ArffLoader.ArffReader;
 /**
  * Holdout. Expects a ratio (to put in test) and one file
  */
-public class Holdout implements Evaluator {
+public class TrainTest implements Evaluator {
 
 	// --- ---- --- Constant
-	public static final String name = "holdout";
+	public static final String name = "traintest";
 
 	// --- --- --- Fields
-	private Path input_file;
-	private double ratio;
+	private Path train_file;
+	private Path test_file;
+	
 
 	// --- --- --- Interface implementation
 
@@ -37,18 +38,16 @@ public class Holdout implements Evaluator {
 	public void init(String[] args) throws ParseException {
 		// --- --- --- Argument validation
 		if (args.length != 2) {
-			throw new ParseException("Evaluator " + name + " expects a ratio (how many instances to put in the test) and a file");
+			throw new ParseException("Evaluator " + name + " expects a training file and a test file");
 		}
-		// --- --- --- Read the ratio
-		try {
-			this.ratio = Double.parseDouble(args[0]);
-		} catch (NumberFormatException e) {
-			throw new ParseException("Evaluator " + name + " cannot read the ratio (found `" + args[0] + "'");
+		// --- --- --- Is the training file readable?
+		train_file = Paths.get(args[0]);
+		if (!Files.isReadable(train_file)) {
+			throw new ParseException("Evaluator " + name + " cannot read file `" + args[0] + "'");
 		}
-
 		// --- --- --- Is the file readable?
-		input_file = Paths.get(args[1]);
-		if (!Files.isReadable(input_file)) {
+		test_file = Paths.get(args[1]);
+		if (!Files.isReadable(test_file)) {
 			throw new ParseException("Evaluator " + name + " cannot read file `" + args[1] + "'");
 		}
 	}
@@ -61,25 +60,23 @@ public class Holdout implements Evaluator {
 		
 		// --- --- --- Load file and prepare the split
 
+		// Load train. Use train as the reference for the structure.
 		// Load a file. Note: go over all the file to count the number of data!
-		// ArffFile hardcode the class as the last attribute. Use this structure.
-		ArffFile arffFile = new ArffFile(input_file);
-		Instances structure = arffFile.getStructure();
+		// ArffFiles hard-code the class as the last attribute. Use this structure.
+		ArffFile trainFile = new ArffFile(train_file);
+		Instances structure = trainFile.getStructure();
 		
 		// Initialisation of the result
 		result.setInfo(model.getModelName(),
-				input_file.getFileName().toString(),
-				arffFile.getStructure().numAttributes(), arffFile.getNumClasses(), arffFile.getNumData());
-
-		// Split the file between train and test following the ratio
-		ArffFile[] split = monash.ml.tools.arff.Utility.splitData(arffFile, ratio, sr);
+				train_file.getFileName().toString(),
+				trainFile.getStructure().numAttributes(), trainFile.getNumClasses(), trainFile.getNumData());		
 		
-		ArffFile trainReaderFactory = split[0];
-		result.numTrain = trainReaderFactory.getNumData();
-		
-		ArffFile testReaderFactory = split[1];
-		ArffReader testReader = testReaderFactory.getNewReader();
-		result.numTest = testReaderFactory.getNumData();
+		result.numTrain = trainFile.getNumData();
+			
+		// Load test.
+		ArffFile testFile = new ArffFile(test_file);
+		result.numTest = testFile.getNumData();
+		ArffReader testReader = testFile.getNewReader();
 		
 		result.preprocessStops();
 		
@@ -90,7 +87,7 @@ public class Holdout implements Evaluator {
 			System.out.println("\n---------------------- Training Started ----------------------");
 		}
 		result.trainBegins();
-		model.train(trainReaderFactory, rg);
+		model.train(trainFile, rg);
 		result.trainEnds();
 		if (verbose) {
 			System.out.println("\n---------------------- Training Finished ----------------------");

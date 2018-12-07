@@ -1,12 +1,12 @@
-package monash.ml.evaluator;
+package bnc.evaluator;
 
 import java.security.SecureRandom;
 
 import org.apache.commons.cli.*;
 import org.apache.commons.math3.random.RandomGenerator;
 
-import monash.ml.model.Model;
-import monash.ml.tools.StopWatch;
+import bnc.model.Model;
+import mltools.StopWatch;
 import weka.core.Utils;
 
 public interface Evaluator {

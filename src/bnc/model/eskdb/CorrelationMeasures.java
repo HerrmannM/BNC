@@ -1,4 +1,4 @@
-package monash.ml.model.eskdb;
+package bnc.model.eskdb;
 
 public class CorrelationMeasures {
 

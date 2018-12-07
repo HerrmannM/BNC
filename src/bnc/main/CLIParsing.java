@@ -1,4 +1,4 @@
-package monash.ml.main;
+package bnc.main;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,8 +11,8 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import monash.ml.evaluator.Evaluator;
-import monash.ml.model.Model;
+import bnc.evaluator.Evaluator;
+import bnc.model.Model;
 
 public class CLIParsing {
 	

@@ -1,4 +1,4 @@
-package monash.ml.model.eskdb;
+package bnc.model.eskdb;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.apache.commons.math3.random.RandomGenerator;
 
-import monash.ml.tools.SUtils;
-import monash.ml.tools.arff.ArffReaderFactory;
+import mltools.SUtils;
+import mltools.arff.ArffReaderFactory;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.Utils;
