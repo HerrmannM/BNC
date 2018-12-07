@@ -55,9 +55,11 @@ Parameters:
 
 ### Evaluator examples
 * Holdout: `--evaluator holdout 0.5 /path/to/file.arff`
-  * Parameters: the ratio of the dataset in the "test" and a dataset arff file
+  * Parameters: The ratio of the dataset in the "test" and a dataset arff file
 * K-Fold Cross Validation `--evaluator kfoldxval 2 5 /path/to/file.arff`
   * Parameters: The number of splits, the number of rounds and a dataset arff file
+* Train test `--evaluator traintest /path/to/trainfile.arff /path/to/testile.arff`
+  * Parameters: A train file and a test file.
 
 ### Example
 The `example` folder contains a script testing several model configurations with 5 rounds of 2-fold cross validation.
